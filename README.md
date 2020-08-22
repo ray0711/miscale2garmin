@@ -10,7 +10,7 @@ It allows the Mi Body Composition Scale 2 to be fully automatic synchronized to 
 
 ## 2. How does this work?
  - after weighing, Mi Body Composition Scale 2 is active for 15 minutes on bluetooth transmission;
- - the ESP32 module every 5 minutes (deep sleep is used) queries scale for data, the process can be started immediately via the reset button;
+ - ESP32 module operates in a deep sleep and wakes up every 5 minutes, queries scale for data, the process can be started immediately via the reset button;
  - the ESP32 module sends the acquired data via the MQTT protocol to the MQTT broker installed on the server;
  - the body weight and impedance data on the server are appropriately processed by scripts;
  - the processed data are sent by the program bodycomposition to Garmin Connect;
