@@ -14,9 +14,9 @@ It allows the Mi Body Composition Scale 2 to be fully automatic synchronized to 
 
 ## 2. How does this work?
 
- - after weighing, scale is active for 15 minutes on bluetooth transmission;
+ - after weighing, Mi Body Composition Scale 2 is active for 15 minutes on bluetooth transmission;
 
- - the ESP32 module every 5 minutes (deep sleep is used) queries Mi Body Composition Scale 2 for data, the process can be started immediately via the reset button;
+ - the ESP32 module every 5 minutes (deep sleep is used) queries scale for data, the process can be started immediately via the reset button;
 
  - the ESP32 module sends the acquired data via the MQTT protocol to the MQTT broker installed on the server;
 
