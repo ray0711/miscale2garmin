@@ -1,6 +1,7 @@
 # Mi Body Composition Scale 2 Garmin Connect
 
-1. Introduction
+## 1. Introduction
+
 This project is based on the following projects:
 
 https://github.com/rando-calrissian/esp32_xiaomi_mi_2_hass
