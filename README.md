@@ -29,17 +29,13 @@ The following information must be entered before compiling the code:
 - parameters of your WiFi network ("ssid", "password", "ip", "gateway", "subnet");
 - connection parameters MQTT ("mqtt_server", "mqtt_port", "mqtt_userName", "mqtt_userPass").
 
-The project is prepared to work with the ESP32 board with the charging module. I based my version on the LI-Ion 18650 battery.
-
-Program for ESP32 has implemented UART debug mode, you can verify if everything is working properly.
-
-After switching the device on, LED will light up for a moment to indicate that the module has started successfully.
-
-If the data are acquired correctly in the next step, the LED will flash for a moment 2 times.
-
-If there is an error, e.g. the data is incomplete, no connection to the WiFi network or the MQTT broker, the LED will light up for 5 seconds.
-
-The program implements the battery level and voltage measurement (beta version), which are sent together with the scale data in topic MQTT.
+Debug and other comments:
+- the project is prepared to work with the ESP32 board with the charging module. I based my version on the LI-Ion 18650 battery;
+- program for ESP32 has implemented UART debug mode, you can verify if everything is working properly;
+- after switching the device on, LED will light up for a moment to indicate that the module has started successfully;
+- if the data are acquired correctly in the next step, the LED will flash for a moment 2 times;
+- if there is an error, e.g. the data is incomplete, no connection to the WiFi network or the MQTT broker, the LED will light up for 5 seconds;
+- the program implements the battery level and voltage measurement (beta version), which are sent together with the scale data in topic MQTT.
 
 
 ## 4. Preparing Linux system
