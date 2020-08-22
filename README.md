@@ -30,12 +30,14 @@ The following information must be entered before compiling the code:
 - connection parameters MQTT ("mqtt_server", "mqtt_port", "mqtt_userName", "mqtt_userPass").
 
 Debug and other comments:
-- the project is prepared to work with the ESP32 board with the charging module (red LEd indicates charging). I based my version on the LI-Ion 18650 battery;
+- the project is prepared to work with the ESP32 board with the charging module (red LED indicates charging). I based my version on the LI-Ion 18650 battery;
 - program for ESP32 has implemented UART debug mode, you can verify if everything is working properly;
 - after switching the device on, blue LED will light up for a moment to indicate that the module has started successfully;
 - if the data are acquired correctly in the next step, the blue LED will flash for a moment 2 times;
 - if there is an error, e.g. the data is incomplete, no connection to the WiFi network or the MQTT broker, the blue LED will light up for 5 seconds;
-- the program implements the battery level and voltage measurement (beta version), which are sent together with the scale data in topic MQTT.
-
+- the program implements the battery level and voltage measurement (beta version), which are sent together with the scale data in topic MQTT;
+- the device has 2 buttons, the first green is the reset button (monostable), the red one is the battery power switch (bistable).
 
 ## 4. Preparing Linux system
+It is based on a Debian Buster virtual machine. I prefer the minimal version with an ssh server (Net Install).
+
