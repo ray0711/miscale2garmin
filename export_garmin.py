@@ -30,10 +30,11 @@ users = [User("male", 172, '02-04-1984', "email", "password", 60, 55),
 		 User("male", 188, '02-04-1984', "email", "password", 92, 85)]
 
 # Import MQTT file as csv
+path = '/home/robert'
 weight = 0
 miimpedance = 0
 mitdatetime = 0
-for filename in glob.glob('data/import_*.log'):
+for filename in glob.glob((path) + '/data/import_*.log'):
 	with open(filename, 'r') as csv_file:
 		csv_reader = csv.reader(csv_file, delimiter=',')
 		line_count = 0
@@ -56,7 +57,7 @@ if selected_user is not None:
 	lib = Xiaomi_Scale_Body_Metrics.bodyMetrics(weight, selected_user.height, selected_user.age, selected_user.sex, int(miimpedance))
 	bone_percentage = (lib.getBoneMass() / weight) * 100
 	muscle_percentage = (lib.getMuscleMass() / weight) * 100
-	message = './bodycomposition upload '
+	message = (path) + '/bodycomposition upload '
 	message += '--bone ' + "{:.2f}".format(bone_percentage) + ' '
 	message += '--email ' + selected_user.email + ' '
 	message += '--fat ' + "{:.2f}".format(lib.getFatPercentage()) + ' '
@@ -71,7 +72,7 @@ if selected_user is not None:
 	os.system(message)
 
 	# Rename file from import to export as archive
-	os.rename('data/import_' + (mitdatetime) + '.log', 'data/export_' + (mitdatetime) + '.log')
+	os.rename((path) + '/data/import_' + (mitdatetime) + '.log', (path) + '/data/export_' + (mitdatetime) + '.log')
 
 else:
 	print("There is no user with the given weight")
