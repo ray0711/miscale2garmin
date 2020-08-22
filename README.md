@@ -58,7 +58,7 @@ Sample photo of the finished module:
 - open a configuration file for Mosquitto and tell it to use this password file to require logins for all connections: allow_anonymous false,
 password_file /etc/mosquitto/passwd;
 - copy the contents of this repository (miscale2garmin) to a directory e.g. /home/robert/;
-- create a "data" directory in /home/robert/;
+- create a "data" directory in /home/robert/.
 
 ## 5. Configuring scripts
 - first script is "import_mqtt.sh", you need to complete data: "user", "password", "host", which are related to the MQTT broker;
