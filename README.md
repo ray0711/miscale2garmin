@@ -38,6 +38,9 @@ Debug and other comments:
 - the program implements the battery level and voltage measurement (beta version), which are sent together with the scale data in topic MQTT;
 - the device has 2 buttons, the first green is the reset button (monostable), the red one is the battery power switch (bistable).
 
+Sample photo of the finished module:
+![alt text](http://icebox.pl/garmin/1.jpg)
+
 ## 4. Preparing Linux system
 It is based on a Debian Buster virtual machine. I prefer the minimal version with an ssh server (Net Install).
 
