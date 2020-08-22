@@ -6,7 +6,16 @@ This project is based on the following projects:
 - https://github.com/lolouk44/xiaomi_mi_scale
 - https://github.com/davidkroell/bodycomposition
 
-It allows the Mi Body Composition Scale 2 to be fully automatically synchronized to Garmin Connect.
+It allows the Mi Body Composition Scale 2 to be fully automatically synchronized to Garmin Connect, the following parameters:
+- Time;
+- Weight;
+- BMI;
+- Body Fat;
+- Bone Mass;
+- Body Water;
+- Physique Rating;
+- Visceral Fat;
+- Metabolic Age.
 
 ## 2. How does this work?
  - after weighing, Mi Body Composition Scale 2 is active for 15 minutes on bluetooth transmission;
@@ -44,7 +53,7 @@ Sample photo of the finished module:
 ## 4. Preparing Linux system
 - I based on a Debian Buster virtual machine. I prefer the minimal version with an ssh server (Net Install);
 - the following modules need to be installed: mosquitto mosquitto-clients;
-- you need to set up a password for MQTT (password must be the same as in ESP32) : sudo mosquitto_passwd -c /etc/mosquitto/passwd admin;
+- you need to set up a password for MQTT (password must be the same as in ESP32): sudo mosquitto_passwd -c /etc/mosquitto/passwd admin;
 - open a configuration file for Mosquitto and tell it to use this password file to require logins for all connections: allow_anonymous false,
 password_file /etc/mosquitto/passwd;
 - copy the contents of this repository (miscale2garmin) to a directory e.g. /home/robert/;
