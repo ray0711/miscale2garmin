@@ -3,9 +3,9 @@
 # *********
 
 # Data acquisition from MQTT broker
-user=user
-passwd=passwd
-host=host
+user=admin
+passwd=password
+host=host_name
 
 # Create file with data
 mosquitto_sub -h $host -t "data" -u $user -P $passwd -C 1 > temp.log

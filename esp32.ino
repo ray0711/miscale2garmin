@@ -26,7 +26,7 @@ IPAddress subnet(255,255,255,0);
 // MQTT details
 const char* mqtt_server = "ip_address";
 const int mqtt_port = 1883;
-const char* mqtt_userName = "user_name";
+const char* mqtt_userName = "admin";
 const char* mqtt_userPass = "user_ password";
 const char* clientId = "esp32_scale";
 
