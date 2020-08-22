@@ -25,7 +25,7 @@ class User():
 		calc_date = datetime.datetime.strptime(self.birthday, "%d-%m-%Y")
 		return today.year - calc_date.year
 
-# Adding all the users
+# Adding all the users (sex, height in cm, birthday in dd-mm-yyyy, email and password to Garmin Connect, max_weight in kg, min_weight in kg)
 users = [User("male", 172, '02-04-1984', "email", "password", 60, 55),
 		 User("male", 188, '02-04-1984', "email", "password", 92, 85)]
 
