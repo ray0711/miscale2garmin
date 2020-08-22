@@ -34,7 +34,7 @@ In Arduino, select the WEMOS LOLIN32 board and set the parameters:
 - Partition Scheme: "No OTA (Large APP)";
 - Port: "COM" on which ESP32 board is detected.
 
-The following information must be entered before compiling the code:
+The following information must be entered before compiling the code (esp32.ino):
 - scale's mac address, it can be read from the Mi Fit application ("scale_mac_addr");
 - parameters of your WiFi network ("ssid", "password", "ip", "gateway", "subnet");
 - connection parameters MQTT ("mqtt_server", "mqtt_port", "mqtt_userName", "mqtt_userPass").
