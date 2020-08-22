@@ -39,7 +39,7 @@ Debug and other comments:
 - the device has 2 buttons, the first green is the reset button (monostable), the red one is the battery power switch (bistable).
 
 Sample photo of the finished module:
-![alt text](http://icebox.pl/garmin/1.jpg)
+![alt text](http://icebox.pl/garmin/esp32.jpg)
 
 ## 4. Preparing Linux system
 It is based on a Debian Buster virtual machine. I prefer the minimal version with an ssh server (Net Install).
