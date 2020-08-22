@@ -22,7 +22,7 @@ It allows the Mi Body Composition Scale 2 to be fully automatic synchronized to 
 
  - the body weight and impedance data on the server are appropriately processed by scripts;
 
- - the processed data are sent by the program body composition to Garmin Connect.
+ - the processed data are sent by the program body composition to Garmin Connect;
 
  - raw data from the scale is backed up on the server.
 
