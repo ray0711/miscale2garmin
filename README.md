@@ -22,11 +22,24 @@ Use the Arduino environment to compile and upload software to ESP32.
 In Arduino, select the WEMOS LOLIN32 board and set the parameters:
 - CPU Frequency: "80MHz (WiFi / BT)" for better energy saving;
 - Partition Scheme: "No OTA (Large APP)";
-- Port: "COM" on which ESP32 board is detected;
+- Port: "COM" on which ESP32 board is detected.
 
 The following information must be entered before compiling the code:
 - scale's mac address, it can be read from the Mi Fit application ("scale_mac_addr");
 - parameters of your WiFi network ("ssid", "password", "ip", "gateway", "subnet");
 - connection parameters MQTT ("mqtt_server", "mqtt_port", "mqtt_userName", "mqtt_userPass").
+
+The project is prepared to work with the ESP32 board with the charging module. I based my version on the LI-Ion 18650 battery.
+
+Program for ESP32 has implemented UART debug mode, you can verify if everything is working properly.
+
+After switching the device on, LED will light up for a moment to indicate that the module has started successfully.
+
+If the data are acquired correctly in the next step, the LED will flash for a moment 2 times.
+
+If there is an error, e.g. the data is incomplete, no connection to the WiFi network or the MQTT broker, the LED will light up for 5 seconds.
+
+The program implements the battery level and voltage measurement (beta version), which are sent together with the scale data in topic MQTT.
+
 
 ## 4. Preparing Linux system
