@@ -9,10 +9,10 @@ import glob
 import datetime
 
 class User():
-	def __init__(self, sex, height, birthday, email, password, max_weight, min_weight):
+	def __init__(self, sex, height, birthdate, email, password, max_weight, min_weight):
 		self.sex = sex
 		self.height = height
-		self.birthday = birthday
+		self.birthdate = birthdate
 		self.email = email
 		self.password = password
 		self.max_weight = max_weight
@@ -22,10 +22,10 @@ class User():
 	@property
 	def age(self):
 		today = datetime.date.today()
-		calc_date = datetime.datetime.strptime(self.birthday, "%d-%m-%Y")
+		calc_date = datetime.datetime.strptime(self.birthdate, "%d-%m-%Y")
 		return today.year - calc_date.year
 
-# Adding all the users (sex, height in cm, birthday in dd-mm-yyyy, email and password to Garmin Connect, max_weight in kg, min_weight in kg)
+# Adding all the users (sex, height in cm, birthdate in dd-mm-yyyy, email and password to Garmin Connect, max_weight in kg, min_weight in kg)
 users = [User("male", 172, '02-04-1984', "email", "password", 60, 55),
 		 User("male", 188, '02-04-1984', "email", "password", 92, 85)]
 
