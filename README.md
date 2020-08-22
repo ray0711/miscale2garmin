@@ -52,7 +52,7 @@ Sample photo of the finished module:
 ![alt text](http://icebox.pl/garmin/esp32.jpg)
 
 ## 4. Preparing Linux system
-- I based on a Debian Buster virtual machine. I prefer the minimal version with an ssh server (Net Install);
+- I based on a virtual machine with Debian Buster. I prefer the minimal version with an ssh server (Net Install);
 - the following modules need to be installed: mosquitto mosquitto-clients;
 - you need to set up a password for MQTT (password must be the same as in ESP32): sudo mosquitto_passwd -c /etc/mosquitto/passwd admin;
 - open a configuration file for Mosquitto and tell it to use this password file to require logins for all connections: allow_anonymous false,
