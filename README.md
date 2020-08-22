@@ -6,7 +6,7 @@ This project is based on the following projects:
 - https://github.com/lolouk44/xiaomi_mi_scale
 - https://github.com/davidkroell/bodycomposition
 
-It allows the Mi Body Composition Scale 2 to be fully automatic synchronized to Garmin Connect.
+It allows the Mi Body Composition Scale 2 to be fully automatically synchronized to Garmin Connect.
 
 ## 2. How does this work?
  - after weighing, Mi Body Composition Scale 2 is active for 15 minutes on bluetooth transmission;
