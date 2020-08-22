@@ -6,7 +6,7 @@ This project is based on the following projects:
 - https://github.com/lolouk44/xiaomi_mi_scale
 - https://github.com/davidkroell/bodycomposition
 
-It allows the Mi Body Composition Scale 2 to be fully automatic synchronized to Garmin Connect.
+It allows the Mi Body Composition Scale 2 to be fully automatically synchronized to Garmin Connect.
 
 ## 2. How does this work?
  - after weighing, Mi Body Composition Scale 2 is active for 15 minutes on bluetooth transmission;
@@ -42,10 +42,17 @@ Sample photo of the finished module:
 ![alt text](http://icebox.pl/garmin/esp32.jpg)
 
 ## 4. Preparing Linux system
-- it is based on a Debian Buster virtual machine. I prefer the minimal version with an ssh server (Net Install);
+- I based on a Debian Buster virtual machine. I prefer the minimal version with an ssh server (Net Install);
 - the following modules need to be installed: mosquitto mosquitto-clients;
-- you need to set up a password for MQTT: sudo mosquitto_passwd -c /etc/mosquitto/passwd admin;
+- you need to set up a password for MQTT (password must be the same as in ESP32) : sudo mosquitto_passwd -c /etc/mosquitto/passwd admin;
 - open a configuration file for Mosquitto and tell it to use this password file to require logins for all connections: allow_anonymous false,
 password_file /etc/mosquitto/passwd;
 - copy the contents of this repository (miscale2garmin) to a directory e.g. /home/robert/;
 - create a "data" directory in /home/robert/;
+
+## 5. Configuring scripts
+- first script is "import_mqtt.sh", you need to complete data: "user", "password", "host", which are related to the MQTT broker;
+- add script import_mqtt.sh to CRON to run it every 1 minute: * / 1 * * * * /home/robert/import_mqtt.sh;
+- second script is "export_garmin.py", you must complete data in the "user" section: sex, height in cm, birthdate in dd-mm-yyyy, email and password to Garmin Connect, max_weight in kg, min_weight in kg;
+- script "export_garmin.py" supports multiple users with individual weights ranges, we can link multiple accounts with Garmin Connect;
+- after weighing, your data will be automatically sent to Garmin Connect after 6 minutes at the latest.
