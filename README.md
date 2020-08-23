@@ -27,17 +27,16 @@ It allows the Mi Body Composition Scale 2 to be fully automatically synchronized
  - raw data from the scale is backed up on the server (renamed to export_file).
  
 ## 3. Bluetooth gateway to WiFi (via MQTT) on ESP32
-Use the Arduino environment to compile and upload software to ESP32.
-To compile the program for ESP32 required to install the following libraries:
+Use Arduino environment to compile and upload software to ESP32, following libraries required:
 - PubSubClient: https://github.com/knolleary/pubsubclient;
 - ESP32 Arduino: https://github.com/espressif/arduino-esp32.
 
-In Arduino, select the WEMOS LOLIN32 board and set the parameters:
+In Arduino, select the WEMOS LOLIN32 board and set parameters:
 - CPU Frequency: "80MHz (WiFi / BT)" for better energy saving;
 - Partition Scheme: "No OTA (Large APP)";
 - Port: "COM" on which ESP32 board is detected.
 
-The following information must be entered before compiling the code (esp32.ino):
+The following information must be entered before compiling code (esp32.ino):
 - scale's mac address, it can be read from the Mi Fit application ("scale_mac_addr");
 - parameters of your WiFi network ("ssid", "password", "ip", "gateway", "subnet");
 - connection parameters MQTT ("mqtt_server", "mqtt_port", "mqtt_userName", "mqtt_userPass").
@@ -56,7 +55,7 @@ Sample photo of the finished module:
 
 ## 4. Preparing Linux system
 - I based on a virtual machine with Debian Buster. I prefer the minimal version with an ssh server (Net Install);
-- minimum hardware requirements are: 1 CPU, 512 MB RAM, 2 GB HDD;
+- minimum hardware requirements are: 1 CPU, 512 MB RAM, 2 GB HDD, network connection (e.g. Raspberry Pi Zero W with Pi OS Lite);
 - the following modules need to be installed: mosquitto, mosquitto-clients;
 - you need to set up a password for MQTT (password must be the same as in ESP32): sudo mosquitto_passwd -c /etc/mosquitto/passwd admin;
 - open a configuration file for Mosquitto and tell it to use this password file to require logins for all connections: allow_anonymous false,
