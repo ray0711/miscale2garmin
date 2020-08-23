@@ -11,7 +11,7 @@ It allows the Mi Body Composition Scale 2 to be fully automatically synchronized
 - Weight;
 - BMI;
 - Body Fat;
-- Skeletal Muscle Mass
+- Skeletal Muscle Mass;
 - Bone Mass;
 - Body Water;
 - Physique Rating;
