@@ -71,7 +71,7 @@ if selected_user is not None:
 	message += '--weight ' + "{:.2f}".format(weight) + ' '
 	os.system(message)
 
-	# Rename file from import to export as archive
+	# Rename file from import to export as backup
 	os.rename((path) + '/data/import_' + (mitdatetime) + '.log', (path) + '/data/export_' + (mitdatetime) + '.log')
 
 else:
