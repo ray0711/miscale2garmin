@@ -52,7 +52,7 @@ for user in users:
 		selected_user = user
 		break
 
-# Calcuating body metrics and send data to Garmin Connect
+# Calculating body metrics and send data to Garmin Connect
 if selected_user is not None:
 	lib = Xiaomi_Scale_Body_Metrics.bodyMetrics(weight, selected_user.height, selected_user.age, selected_user.sex, int(miimpedance))
 	bone_percentage = (lib.getBoneMass() / weight) * 100
