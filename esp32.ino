@@ -27,7 +27,7 @@ IPAddress subnet(255,255,255,0);
 const char* mqtt_server = "ip_address";
 const int mqtt_port = 1883;
 const char* mqtt_userName = "admin";
-const char* mqtt_userPass = "user_ password";
+const char* mqtt_userPass = "user_password";
 const char* clientId = "esp32_scale";
 
 //Topic name to subscribe
