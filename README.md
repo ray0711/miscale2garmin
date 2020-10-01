@@ -71,4 +71,4 @@ password_file /etc/mosquitto/passwd;
 - add in "export_garmin.py", path to the folder where the copied files are, e.g. "/home/robert";
 - script "export_garmin.py" supports multiple users with individual weights ranges, we can link multiple accounts with Garmin Connect;
 - after weighing, your data will be automatically sent to Garmin Connect;
-- if there is an error sending to Garmin Connect, data will be sent again in a minute, sending errors or sending success are saved in a temporary file, e.g. /home/robert/datatemp.log.
+- if there is an error sending to Garmin Connect, data will be sent again in a minute, sending errors or sending success are saved in a temporary file, e.g. /home/robert/data/temp.log.
