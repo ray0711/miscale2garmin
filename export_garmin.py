@@ -1,5 +1,5 @@
 # *********
-# Mi Body Composition Scale 2 Garmin Connect v1.0
+# Mi Body Composition Scale 2 Garmin Connect v1.1
 # *********
 
 import Xiaomi_Scale_Body_Metrics
@@ -70,9 +70,5 @@ if selected_user is not None:
 	message += '--visceralFat ' + "{:.2f}".format(lib.getVisceralFat()) + ' '
 	message += '--weight ' + "{:.2f}".format(weight) + ' '
 	os.system(message)
-
-	# Rename file from import to export as backup
-	os.rename((path) + '/data/import_' + (mitdatetime) + '.log', (path) + '/data/export_' + (mitdatetime) + '.log')
-
 else:
 	print("There is no user with the given weight")
