@@ -1,5 +1,5 @@
 # *********
-# Mi Body Composition Scale 2 Garmin Connect v1.1
+# Mi Body Composition Scale 2 Garmin Connect v1.2
 # *********
 
 import Xiaomi_Scale_Body_Metrics
@@ -62,13 +62,14 @@ if selected_user is not None:
 	message += '--email ' + selected_user.email + ' '
 	message += '--fat ' + "{:.2f}".format(lib.getFatPercentage()) + ' '
 	message += '--hydration ' + "{:.2f}".format(lib.getWaterPercentage()) + ' '
-	message += '--metabolicAge ' + "{:.0f}".format(lib.getMetabolicAge()) + ' '
+	message += '--metabolic-age ' + "{:.0f}".format(lib.getMetabolicAge()) + ' '
 	message += '--muscle ' + "{:.2f}".format(muscle_percentage) + ' '
 	message += '--password ' + selected_user.password + ' '
-	message += '--physiqueRating ' + "{:.2f}".format(lib.getBodyType()) + ' '
+	message += '--physique-rating ' + "{:.2f}".format(lib.getBodyType()) + ' '
 	message += '--unix-timestamp ' + mitdatetime + ' '
-	message += '--visceralFat ' + "{:.2f}".format(lib.getVisceralFat()) + ' '
+	message += '--visceral-fat ' + "{:.2f}".format(lib.getVisceralFat()) + ' '
 	message += '--weight ' + "{:.2f}".format(weight) + ' '
+	message += '--max-tries 1'
 	os.system(message)
 else:
 	print("There is no user with the given weight")

@@ -1,5 +1,5 @@
 # *********
-# Mi Body Composition Scale 2 Garmin Connect v1.1
+# Mi Body Composition Scale 2 Garmin Connect v1.2
 # *********
 
 # Data acquisition from MQTT broker
@@ -22,10 +22,10 @@ fi
 python3 $path/export_garmin.py > $path/data/temp.log 2>&1
 
 # Logging and handling errors
-if grep -q 'panic' $path/data/temp.log ; then
+if grep -q 'Error' $path/data/temp.log ; then
 	echo 'Errors have been detected'
-elif grep -q 'failed' $path/data/temp.log ; then
-	echo 'Temporary baned or authentication failed'
-else
+elif [ -f $path/data/import_$rename.log ] ; then
 	mv $path/data/import_$rename.log $path/data/export_$rename.log
+else
+	echo 'There is no file to export'
 fi
