@@ -73,4 +73,4 @@ if selected_user is not None:
 	os.system(message)
 	print("Processed file: import_" + (mitdatetime) + ".log")
 else:
-	print("There is no user with the given weight")
+	print("There is no user with the given weight or there is no file to export")
