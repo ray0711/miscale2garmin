@@ -1,5 +1,5 @@
 # *********
-# Mi Body Composition Scale 2 Garmin Connect v1.2
+# Mi Body Composition Scale 2 Garmin Connect v1.3
 # *********
 
 import Xiaomi_Scale_Body_Metrics
@@ -71,5 +71,6 @@ if selected_user is not None:
 	message += '--weight ' + "{:.2f}".format(weight) + ' '
 	message += '--max-tries 1'
 	os.system(message)
+	print("Processed file: import_" + (mitdatetime) + ".log")
 else:
 	print("There is no user with the given weight")
