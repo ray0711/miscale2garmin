@@ -13,8 +13,9 @@ mosquitto_sub -h $host -t 'data' -u $user -P $passwd -C 1 > $path/data/temp.log
 sed -i '1iWeight,Impedance,Units,User,Timestamp,Bat_in_V,Bat_in_%' $path/data/temp.log
 sed -Ei '2,$ s/(([^,]*,){4})([^,]+)(.*)/echo \x27\1\x27$(date -d "\3" +%s)\x27\4\x27/e' $path/data/temp.log
 rename=`awk -F "\"*,\"*" 'END{print $5}' $path/data/temp.log`
-
 mv $path/data/temp.log $path/data/import_$rename.log
+
+# Checking if file was not exported
 if [ -f $path/data/export_$rename.log ] ; then
 	rm $path/data/import_$rename.log
 fi
