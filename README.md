@@ -3,6 +3,7 @@
 ## 1. Introduction
 This project is based on the following projects:
 - https://github.com/rando-calrissian/esp32_xiaomi_mi_2_hass
+- https://github.com/G6EJD/LiPo_Battery_Capacity_Estimator
 - https://github.com/lolouk44/xiaomi_mi_scale
 - https://github.com/davidkroell/bodycomposition
 
