@@ -23,7 +23,7 @@ fi
 python3 $path/export_garmin.py > $path/data/temp.log 2>&1
 
 # Logging and handling errors
-move=`awk -F "_" '/Processed file: import/{print $2;}' $path/data/temp.log`
+move=`awk -F "_" '/Processed file: import/{print $2}' $path/data/temp.log`
 
 if grep -q 'Error' $path/data/temp.log ; then
 	echo 'Errors have been detected'
