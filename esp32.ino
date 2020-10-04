@@ -1,5 +1,5 @@
 /*********
-* Mi Body Composition Scale 2 Garmin Connect v1.0
+* Mi Body Composition Scale 2 Garmin Connect v1.1
 *********/
 
 #include <Arduino.h>
@@ -141,7 +141,7 @@ void StartESP32() {
   // Initializing serial port for debugging purposes
   Serial.begin(115200);
   Serial.println( "" );
-  Serial.println( "Mi Body Composition Scale 2 Garmin Connect v1.0" );
+  Serial.println( "Mi Body Composition Scale 2 Garmin Connect v1.1" );
   Serial.println( "" );
 }
 
@@ -189,8 +189,9 @@ void ScanBLE() {
 
     // Battery voltage measurement, for LOLIN32 D32 PRO is internal pin 35 (no voltage divider need, already fitted to board)
     // NODEMCU ESP32 with 100K+100K voltage divider
-    float voltage = analogRead(35) / 4096.0 * 7.07;
-    uint8_t percentage = 2808.3808 * pow(voltage, 4) - 43560.9157 * pow(voltage, 3) + 252848.5888 * pow(voltage, 2) - 650767.4615 * voltage + 626532.5703;
+    uint8_t percentage = 100;
+    float voltage = analogRead(35) / 4096.0 * 7.23;
+    percentage = 2808.3808 * pow(voltage, 4) - 43560.9157 * pow(voltage, 3) + 252848.5888 * pow(voltage, 2) - 650767.4615 * voltage + 626532.5703;
     if ( voltage > 4.19 ) 
       percentage = 100;
     else if ( voltage <= 3.50 )
