@@ -19,21 +19,15 @@ if [ -f $path/data/export_$rename.log ] ; then
 	rm $path/data/import_$rename.log
 fi
 
-# Calculate data and export to Garmin Connect
+# Calculate data and export to Garmin Connect, logging, handling errors, backup file
 if [ -f $path/data/import_* ] ; then
 	python3 $path/export_garmin.py > $path/data/temp.log 2>&1
-fi
-
-# Logging, handling errors, backup file
-if [ -f $path/data/temp.log ] ; then
 	move=`awk -F "_" '/Processed file: import/{print $2}' $path/data/temp.log`
 	if grep -q 'Error' $path/data/temp.log ; then
 		echo 'Errors have been detected'
 	elif grep -q 'panic' $path/data/temp.log ; then
 		echo 'Errors have been detected'
-	elif [ -f $path/data/import_$move ] ; then
-		mv $path/data/import_$move $path/data/export_$move
 	else
-		echo 'There is no file to export'
+		mv $path/data/import_$move $path/data/export_$move
 	fi
 fi
