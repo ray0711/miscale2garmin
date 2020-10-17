@@ -1,5 +1,5 @@
 /*********
-* Mi Body Composition Scale 2 Garmin Connect v1.1
+* Mi Body Composition Scale 2 Garmin Connect v1.2
 *********/
 
 #include <Arduino.h>
@@ -10,6 +10,7 @@
 #include <BLEUtils.h>
 #include <BLEScan.h>
 #include <BLEAdvertisedDevice.h>
+#include <Timestamps.h>
 
 // Scale Mac Address, please use lowercase letters
 #define scale_mac_addr "c8:b2:1e:c9:66:83"
@@ -141,7 +142,7 @@ void StartESP32() {
   // Initializing serial port for debugging purposes
   Serial.begin(115200);
   Serial.println( "" );
-  Serial.println( "Mi Body Composition Scale 2 Garmin Connect v1.1" );
+  Serial.println( "Mi Body Composition Scale 2 Garmin Connect v1.2" );
   Serial.println( "" );
 }
 
@@ -204,9 +205,13 @@ void ScanBLE() {
       strUnits = "kg";
     else if ( units == 3 )
       strUnits = "lbs";
-    String time = String( String( stoi2( hex, 4 ) ) + "-" + String( stoi( hex, 8 ) ) + "-" + String( stoi( hex, 10 ) ) + " " + String( stoi( hex, 12 ) ) + ":" + String( stoi( hex, 14 ) ) + ":" + String( stoi( hex, 16 ) ) );
-    if ( weight > 0 ) {
 
+	// Instantiating object of class Timestamp with an time offset of -3600 seconds for UTC+01:00
+    Timestamps ts(-3600);
+    int time_unix = ts.getTimestampUNIX( stoi2( hex, 4 ), stoi( hex, 8 ), stoi( hex, 10 ), stoi( hex, 12 ), stoi( hex, 14 ), stoi( hex, 16) );  
+    String time = String( String( stoi2( hex, 4 ) ) + "-" + String( stoi( hex, 8 ) ) + "-" + String( stoi( hex, 10 ) ) + " " + String( stoi( hex, 12 ) ) + ":" + String( stoi( hex, 14 ) ) + ":" + String( stoi( hex, 16 ) ) );
+
+    if ( weight > 0 ) {
       // LED blinking for 0.75 second, indicate finish reading BLE data
       Serial.println( "Reading BLE data complete, finished BLE scan" );
       digitalWrite(5, LOW);
@@ -226,6 +231,8 @@ void ScanBLE() {
       publish_data += String(",");
       publish_data += String( user );
       publish_data += String(",");
+      publish_data += String( time_unix );
+      publish_data += String(",");
       publish_data += time;
       publish_data += String(",");
       publish_data += String( voltage );
@@ -234,12 +241,6 @@ void ScanBLE() {
       publish();
     }  
   }
-}
-
-void setup() {
-  StartESP32();
-  ScanBLE();
-  goToDeepSleep();
 }
 
 void loop() {
