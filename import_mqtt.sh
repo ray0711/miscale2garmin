@@ -12,6 +12,8 @@ path=/home/robert
 read_MQTT=`mosquitto_sub -h $host -t 'data' -u $user -P $passwd -C 1 | awk -F "\"*,\"*" 'END{print $5}'`
 if [ -f $path/data/export_$read_MQTT.log ] ; then
 	echo 'This data has already been exported'
+elif [ -f $path/data/import_$read_MQTT.log ] ; then
+	echo 'This import file already exists'
 else
 	mosquitto_sub -h $host -t 'data' -u $user -P $passwd -C 1 > $path/data/temp.log
 	sed -i '1iWeight,Impedance,Units,User,Unix_time,Readable_time,Bat_in_V,Bat_in_%' $path/data/temp.log
