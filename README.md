@@ -40,8 +40,8 @@ In Arduino, select the WEMOS LOLIN32 board and set parameters:
 The following information must be entered before compiling code (esp32.ino):
 - scale's mac address, it can be read from the Mi Fit application ("scale_mac_addr");
 - parameters of your WiFi network ("ssid", "password", "ip", "gateway", "subnet");
-- connection parameters MQTT ("mqtt_server", "mqtt_port", "mqtt_userName", "mqtt_userPass");
-- other settings ("led_pin", "adc_pin", "Timestamps").
+- other settings ("led_pin", "adc_pin", "Timestamps");
+- connection parameters MQTT ("mqtt_server", "mqtt_port", "mqtt_userName", "mqtt_userPass").
 
 Debug and other comments:
 - project is prepared to work with the ESP32 board with the charging module (red LED indicates charging). I based my version on the Li-ion 18650 battery;
