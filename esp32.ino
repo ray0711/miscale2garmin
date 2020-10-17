@@ -206,7 +206,7 @@ void ScanBLE() {
     else if ( units == 3 )
       strUnits = "lbs";
 
-	// Instantiating object of class Timestamp with an time offset of -3600 seconds for UTC+01:00
+    // Instantiating object of class Timestamp with an time offset of -3600 seconds for UTC+01:00
     Timestamps ts(-3600);
     int time_unix = ts.getTimestampUNIX( stoi2( hex, 4 ), stoi( hex, 8 ), stoi( hex, 10 ), stoi( hex, 12 ), stoi( hex, 14 ), stoi( hex, 16) );  
     String time = String( String( stoi2( hex, 4 ) ) + "-" + String( stoi( hex, 8 ) ) + "-" + String( stoi( hex, 10 ) ) + " " + String( stoi( hex, 12 ) ) + ":" + String( stoi( hex, 14 ) ) + ":" + String( stoi( hex, 16 ) ) );
