@@ -19,10 +19,15 @@
 const char* ssid = "ssid_name";
 const char* password = "password";
 
-// Static IP addressing for ESP32.
+// Static IP addressing for ESP32
 IPAddress ip(192,168,0,2);
 IPAddress gateway(192,168,0,1);
 IPAddress subnet(255,255,255,0);
+
+// Other ESP32 settings
+const int led_pin = 5;
+const int adc_pin = 35;
+Timestamps ts(-3600);
 
 // MQTT details
 const char* mqtt_server = "ip_address";
@@ -30,8 +35,6 @@ const int mqtt_port = 1883;
 const char* mqtt_userName = "admin";
 const char* mqtt_userPass = "user_password";
 const char* clientId = "esp32_scale";
-
-//Topic name to subscribe
 const char* mqtt_attributes = "data"; 
 
 String mqtt_clientId = String( clientId );
@@ -56,10 +59,10 @@ void goToDeepSleep() {
   esp_deep_sleep_start();
 }
 
-// LED indicate error, is on for 5 seconds, for LOLIN32 LITE is pin 22, for LOLIN32 D32 PRO is pin 5
+// LED indicate error, is on for 5 seconds, for LOLIN32 LITE is pin 22, for LOLIN32 D32 PRO is pin 5, define in Other ESP32 settings section
 void errorLED() {
-  pinMode(5, OUTPUT); 
-  digitalWrite(5, LOW);
+  pinMode(led_pin, OUTPUT); 
+  digitalWrite(led_pin, LOW);
   delay(5000);
   goToDeepSleep();
 }
@@ -134,10 +137,10 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
 
 void StartESP32() {
   // LED indicate start ESP32, is on for 0.25 second
-  pinMode(5, OUTPUT); 
-  digitalWrite(5, LOW);
+  pinMode(led_pin, OUTPUT); 
+  digitalWrite(led_pin, LOW);
   delay(250);
-  digitalWrite(5, HIGH);
+  digitalWrite(led_pin, HIGH);
 
   // Initializing serial port for debugging purposes
   Serial.begin(115200);
@@ -188,10 +191,10 @@ void ScanBLE() {
     int user = stoi( hex, 6 );
     int units = stoi( hex, 0 );
 
-    // Battery voltage measurement, for LOLIN32 D32 PRO is internal pin 35 (no voltage divider need, already fitted to board)
+    // Battery voltage measurement, for LOLIN32 D32 PRO is internal pin 35 (no voltage divider need, already fitted to board), define in Other ESP32 settings section
     // NODEMCU ESP32 with 100K+100K voltage divider
     uint8_t percentage = 100;
-    float voltage = analogRead(35) / 4096.0 * 7.23;
+    float voltage = analogRead(adc_pin) / 4096.0 * 7.23;
     percentage = 2808.3808 * pow(voltage, 4) - 43560.9157 * pow(voltage, 3) + 252848.5888 * pow(voltage, 2) - 650767.4615 * voltage + 626532.5703;
     if ( voltage > 4.19 ) 
       percentage = 100;
@@ -206,21 +209,20 @@ void ScanBLE() {
     else if ( units == 3 )
       strUnits = "lbs";
 
-    // Instantiating object of class Timestamp with an time offset of -3600 seconds for UTC+01:00
-    Timestamps ts(-3600);
+    // Instantiating object of class Timestamp with an time offset of -3600 seconds for UTC+01:00, define in Other ESP32 settings section
     int time_unix = ts.getTimestampUNIX( stoi2( hex, 4 ), stoi( hex, 8 ), stoi( hex, 10 ), stoi( hex, 12 ), stoi( hex, 14 ), stoi( hex, 16) );  
     String time = String( String( stoi2( hex, 4 ) ) + "-" + String( stoi( hex, 8 ) ) + "-" + String( stoi( hex, 10 ) ) + " " + String( stoi( hex, 12 ) ) + ":" + String( stoi( hex, 14 ) ) + ":" + String( stoi( hex, 16 ) ) );
-
+    
     if ( weight > 0 ) {
       // LED blinking for 0.75 second, indicate finish reading BLE data
       Serial.println( "Reading BLE data complete, finished BLE scan" );
-      digitalWrite(5, LOW);
+      digitalWrite(led_pin, LOW);
       delay(250);
-      digitalWrite(5, HIGH);
+      digitalWrite(led_pin, HIGH);
       delay(250);
-      digitalWrite(5, LOW);
+      digitalWrite(led_pin, LOW);
       delay(250);
-      digitalWrite(5, HIGH);
+      digitalWrite(led_pin, HIGH);
 
       // Currently we just send the raw values over and let app figure out the rest
       publish_data += String( weight );
@@ -241,6 +243,12 @@ void ScanBLE() {
       publish();
     }  
   }
+}
+
+void setup() {
+  StartESP32();
+  ScanBLE();
+  goToDeepSleep();
 }
 
 void loop() {
