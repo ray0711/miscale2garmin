@@ -2,10 +2,10 @@
 
 ## 1. Introduction
 This project is based on the following projects:
-- https://github.com/rando-calrissian/esp32_xiaomi_mi_2_hass
-- https://github.com/G6EJD/LiPo_Battery_Capacity_Estimator
-- https://github.com/lolouk44/xiaomi_mi_scale
-- https://github.com/davidkroell/bodycomposition
+- https://github.com/rando-calrissian/esp32_xiaomi_mi_2_hass;
+- https://github.com/G6EJD/LiPo_Battery_Capacity_Estimator;
+- https://github.com/lolouk44/xiaomi_mi_scale;
+- https://github.com/davidkroell/bodycomposition.
 
 It allows the Mi Body Composition Scale 2 to be fully automatically synchronized to Garmin Connect, the following parameters:
 - Time;
@@ -29,7 +29,8 @@ It allows the Mi Body Composition Scale 2 to be fully automatically synchronized
 ## 3. Bluetooth gateway to WiFi (via MQTT) on ESP32
 Use Arduino environment to compile and upload software to ESP32, following libraries required:
 - PubSubClient: https://github.com/knolleary/pubsubclient;
-- ESP32 Arduino: https://github.com/espressif/arduino-esp32.
+- ESP32 Arduino: https://github.com/espressif/arduino-esp32;
+- Timestamps: https://github.com/alve89/Timestamps.
 
 In Arduino, select the WEMOS LOLIN32 board and set parameters:
 - CPU Frequency: "80MHz (WiFi / BT)" for better energy saving;
