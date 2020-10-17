@@ -29,7 +29,8 @@ It allows the Mi Body Composition Scale 2 to be fully automatically synchronized
 ## 3. Bluetooth gateway to WiFi (via MQTT) on ESP32
 Use Arduino environment to compile and upload software to ESP32, following libraries required:
 - PubSubClient: https://github.com/knolleary/pubsubclient;
-- ESP32 Arduino: https://github.com/espressif/arduino-esp32.
+- ESP32 Arduino: https://github.com/espressif/arduino-esp32;
+- Timestamps: https://github.com/alve89/Timestamps.
 
 In Arduino, select the WEMOS LOLIN32 board and set parameters:
 - CPU Frequency: "80MHz (WiFi / BT)" for better energy saving;
