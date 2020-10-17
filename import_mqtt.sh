@@ -1,5 +1,5 @@
 # *********
-# Mi Body Composition Scale 2 Garmin Connect v1.4
+# Mi Body Composition Scale 2 Garmin Connect v1.5
 # *********
 
 # Data acquisition from MQTT broker
@@ -9,15 +9,13 @@ host=host_name
 path=/home/robert
 
 # Create file with data
-mosquitto_sub -h $host -t 'data' -u $user -P $passwd -C 1 > $path/data/temp.log
-sed -i '1iWeight,Impedance,Units,User,Timestamp,Bat_in_V,Bat_in_%' $path/data/temp.log
-sed -Ei '2,$ s/(([^,]*,){4})([^,]+)(.*)/echo \x27\1\x27$(date -d "\3" +%s)\x27\4\x27/e' $path/data/temp.log
-rename=`awk -F "\"*,\"*" 'END{print $5}' $path/data/temp.log`
-mv $path/data/temp.log $path/data/import_$rename.log
-
-# Checking if file was not exported
-if [ -f $path/data/export_$rename.log ] ; then
-	rm $path/data/import_$rename.log
+read_MQTT=`mosquitto_sub -h $host -t 'data' -u $user -P $passwd -C 1 | awk -F "\"*,\"*" 'END{print $5}'`
+if [ -f $path/data/export_$read_MQTT.log ] ; then
+	echo 'This data has already been exported'
+else
+	mosquitto_sub -h $host -t 'data' -u $user -P $passwd -C 1 > $path/data/temp.log
+	sed -i '1iWeight,Impedance,Units,User,Unix_time,Epoch_time,Bat_in_V,Bat_in_%' $path/data/temp.log
+	mv $path/data/temp.log $path/data/import_$read_MQTT.log
 fi
 
 # Calculate data and export to Garmin Connect, logging, handling errors, backup file
