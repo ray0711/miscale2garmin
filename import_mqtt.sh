@@ -15,9 +15,8 @@ if [ -f $path/data/export_$read_MQTT.log ] ; then
 elif [ -f $path/data/import_$read_MQTT.log ] ; then
 	echo 'This import file already exists'
 else
-	mosquitto_sub -h $host -t 'data' -u $user -P $passwd -C 1 > $path/data/temp.log
-	sed -i '1iWeight,Impedance,Units,User,Unix_time,Readable_time,Bat_in_V,Bat_in_%' $path/data/temp.log
-	mv $path/data/temp.log $path/data/import_$read_MQTT.log
+	mosquitto_sub -h $host -t 'data' -u $user -P $passwd -C 1 > $path/data/import_$read_MQTT.log
+	sed -i '1iWeight,Impedance,Units,User,Unix_time,Readable_time,Bat_in_V,Bat_in_%' $path/data/import_$read_MQTT.log
 fi
 
 # Calculate data and export to Garmin Connect, logging, handling errors, backup file
