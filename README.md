@@ -53,7 +53,7 @@ Debug and other comments:
 - device has 2 buttons, the first green is the reset button (monostable), the red one is the battery power switch (bistable).
 
 Sample photo of the finished module with Wemos LOLIN D32 Pro:
-![alt text](http://icebox.pl/garmin/esp32.jpg)
+![alt text](https://github.com/RobertWojtowicz/miscale2garmin/blob/master/esp32.jpg)
 
 ## 4. Preparing Linux system
 - I based on a virtual machine with Debian Buster. I prefer the minimal version with an ssh server (Net Install);
