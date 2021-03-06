@@ -60,8 +60,7 @@ Sample photo of the finished module with ESP32 (Wemos LOLIN D32 Pro) and Li-ion 
 - minimum hardware requirements are: 1 CPU, 512 MB RAM, 2 GB HDD, network connection (e.g. Raspberry Pi Zero W with Pi OS Lite);
 - the following modules need to be installed: mosquitto, mosquitto-clients;
 - you need to set up a password for MQTT (password must be the same as in ESP32): sudo mosquitto_passwd -c /etc/mosquitto/passwd admin;
-- open a configuration file for Mosquitto and tell it to use this password file to require logins for all connections: allow_anonymous false,
-password_file /etc/mosquitto/passwd;
+- open a configuration file for Mosquitto (/etc/mosquitto/mosquitto.conf) and tell it to use this password file to require logins for all connections: allow_anonymous false, password_file /etc/mosquitto/passwd;
 - copy the contents of this repository (miscale2garmin) to a directory e.g. /home/robert/;
 - create a "data" directory in /home/robert/.
 
