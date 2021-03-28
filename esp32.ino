@@ -81,7 +81,7 @@ void reconnect() {
       delay(10);
       Serial.print(".");
       nFailCount++;
-      if ( nFailCount > 150 )
+      if ( nFailCount > 1500 )
         // Why can't we connect? Just try it after waking up
         errorLED();
     }
@@ -104,7 +104,7 @@ void reconnect() {
       Serial.println(", try again in 200 milliseconds");
       delay(200);
       nFailCount++;
-      if ( nFailCount > 150 )
+      if ( nFailCount > 500 )
         errorLED();
     }  
   }
