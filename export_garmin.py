@@ -1,5 +1,5 @@
 # *********
-# Mi Body Composition Scale 2 Garmin Connect v1.3
+# Mi Body Composition Scale 2 Garmin Connect v1.4
 # *********
 
 import Xiaomi_Scale_Body_Metrics
@@ -59,6 +59,7 @@ if selected_user is not None:
 	muscle_percentage = (lib.getMuscleMass() / weight) * 100
 	message = (path) + '/bodycomposition upload '
 	message += '--bone ' + "{:.2f}".format(bone_percentage) + ' '
+	message += '--calories ' + "{:.2f}".format(lib.getBMR()) + ' '
 	message += '--email ' + selected_user.email + ' '
 	message += '--fat ' + "{:.2f}".format(lib.getFatPercentage()) + ' '
 	message += '--hydration ' + "{:.2f}".format(lib.getWaterPercentage()) + ' '
