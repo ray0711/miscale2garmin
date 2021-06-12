@@ -1,5 +1,5 @@
 # *********
-# Mi Body Composition Scale 2 Garmin Connect v1.6
+# Mi Body Composition Scale 2 Garmin Connect v1.5
 # *********
 
 # Data acquisition from MQTT broker
