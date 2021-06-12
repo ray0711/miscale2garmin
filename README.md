@@ -21,7 +21,7 @@ It allows the Mi Body Composition Scale 2 to be fully automatically synchronized
 
 ## 2. How does this work?
  - after weighing, Mi Body Composition Scale 2 is active for 15 minutes on bluetooth transmission;
- - ESP32 module operates in a deep sleep and wakes up every 5 minutes, queries scale for data, the process can be started immediately via the reset button;
+ - ESP32 module operates in a deep sleep and wakes up every 7 minutes, queries scale for data, the process can be started immediately via the reset button;
  - ESP32 module sends the acquired data via the MQTT protocol to the MQTT broker installed on the server;
  - body weight and impedance data on the server are appropriately processed by scripts;
  - processed data are sent by the program bodycomposition to Garmin Connect;
@@ -50,7 +50,7 @@ Debug and other comments:
 - after switching the device on, blue LED will light up for a moment to indicate that the module has started successfully;
 - if the data are acquired correctly in the next step, blue LED will flash for a moment 2 times;
 - if there is an error, e.g. the data is incomplete, no connection to the WiFi network or the MQTT broker, blue LED will light up for 5 seconds;
-- program implements the battery level and voltage measurement (beta version), which are sent together with the scale data in topic MQTT;
+- program implements the battery level and voltage measurement (beta, is not working properly yet), which are sent together with the scale data in topic MQTT;
 - device has 2 buttons, the first green is the reset button (monostable), the red one is the battery power switch (bistable).
 
 Sample photo of the finished module with ESP32 (Wemos LOLIN D32 Pro) and Li-ion 18650 battery (LG 3600mAh, LGDBM361865):
