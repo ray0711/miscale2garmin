@@ -63,7 +63,7 @@ Sample photo of the finished module with ESP32 (Wemos LOLIN D32 Pro) and Li-ion 
 - you need to set up a password for MQTT (password must be the same as in ESP32): sudo mosquitto_passwd -c /etc/mosquitto/passwd admin;
 - open a configuration file for Mosquitto (/etc/mosquitto/mosquitto.conf) and tell it to use this password file to require logins for all connections: allow_anonymous false, password_file /etc/mosquitto/passwd;
 - copy the contents of this repository (miscale2garmin) to a directory e.g. /home/robert/;
-- go to folder /home/robert/ and unpack bodycomposition file with the command: tar xvzf bodycomposition_2.2.0-rc2_Linux_x86_64.tar.gz;
+- go to folder /home/robert/ and unpack bodycomposition file with the command: tar xvzf bodycomposition_PACKAGE_VERSION.tar.gz;
 - make a file executable with the command: chmod +x /home/robert/bodycomposition;
 - create a "data" directory in /home/robert/.
 
