@@ -1,5 +1,5 @@
 # *********
-# Mi Body Composition Scale 2 Garmin Connect v1.5
+# Mi Body Composition Scale 2 Garmin Connect v1.6
 # *********
 
 # Data acquisition from MQTT broker
@@ -26,6 +26,8 @@ if [ -f $path/data/import_* ] ; then
 	if grep -q 'Error' $path/data/temp.log ; then
 		echo 'Errors have been detected'
 	elif grep -q 'panic' $path/data/temp.log ; then
+		echo 'Errors have been detected'
+	elif grep -q 'denied' $path/data/temp.log ; then
 		echo 'Errors have been detected'
 	else
 		mv $path/data/import_$move $path/data/export_$move

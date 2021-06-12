@@ -1,5 +1,5 @@
 /*********
-* Mi Body Composition Scale 2 Garmin Connect v1.2
+* Mi Body Composition Scale 2 Garmin Connect v1.3
 *********/
 
 #include <Arduino.h>
@@ -55,7 +55,7 @@ int16_t stoi2( String input, uint16_t index1 ) {
 // Deep sleep for 5 minutes
 void goToDeepSleep() {
   Serial.println( "Waiting for next scan, going to sleep" );
-  esp_sleep_enable_timer_wakeup( 5 * 60 * 1000000 );
+  esp_sleep_enable_timer_wakeup( 7 * 60 * 1000000 );
   esp_deep_sleep_start();
 }
 
