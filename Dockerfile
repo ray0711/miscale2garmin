@@ -8,4 +8,5 @@ COPY Xiaomi_Scale_Body_Metrics.py ./
 COPY body_scales.py ./
 COPY mqttListener.py ./
 
+ENV PYTHONUNBUFFERED 1
 CMD python3 /app/mqttListener.py

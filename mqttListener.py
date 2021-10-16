@@ -6,9 +6,11 @@ import glob
 import datetime
 import sys
 import paho.mqtt.client as mqtt
+import threading
 
 last_weight=None
 last_impedance=None
+lock = threading.Lock()
 
 def age(birthdate):
     today = datetime.date.today()
@@ -28,6 +30,8 @@ def on_message_impedance(client, userdata, message):
     upload()
 
 def upload():
+    print("lock aqcuire")
+    print(lock.acquire())
     global last_weight
     global last_impedance
     if last_weight is not None and last_impedance is not None:
@@ -41,7 +45,7 @@ def upload():
 
         bone_percentage = (lib.getBoneMass() / last_weight) * 100
         muscle_percentage = (lib.getMuscleMass() / last_weight) * 100
-        message = '/bodycomposition upload '
+        message = './bodycomposition upload '
         message += '--bone ' + "{:.2f}".format(bone_percentage) + ' '
         message += '--calories ' + "{:.2f}".format(lib.getBMR()) + ' '
         message += '--email ' + os.environ["GARMIN_EMAIL"] + ' '
@@ -62,6 +66,9 @@ def upload():
         # reset
         last_weight=None
         last_impedance=None
+
+    lock.release()
+    print("lock released")
 
 client = mqtt.Client("GarminConnectUploader")
 client.connect(os.environ["MQTT_HOST"])
