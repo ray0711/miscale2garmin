@@ -57,8 +57,7 @@ def upload():
         message += '--physique-rating ' + "{:.2f}".format(lib.getBodyType()) + ' '
         message += '--unix-timestamp ' + str(int(datetime.datetime.now().timestamp())) + ' '
         message += '--visceral-fat ' + "{:.2f}".format(lib.getVisceralFat()) + ' '
-        message += '--weight ' + "{:.2f}".format(last_weight) + ' '
-        message += '--max-tries 1'
+        message += '--weight ' + "{:.2f}".format(last_weight) 
         print(message)
         os.system(message)
         print("done")
